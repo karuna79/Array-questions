@@ -1,0 +1,37 @@
+
+#include <stdio.h>
+void swap(int a,int b);
+int main()
+{
+    int n,k;
+    scanf("%d %d",&n, &k);
+    int arr[n];
+    for(int i=0;i<n;i++){
+    scanf("%d",&arr[i]);}
+    for(int i=0;i<n;i=i+k)
+    {
+        if(i+k<=n)
+        {
+            for(int j=0;j<k/2;j++)
+            {
+                int temp;
+                temp=arr[j+i];
+                arr[j+i]=arr[k-1-j+i];
+                arr[k-1-j+i]=temp;
+            }
+        }
+        else
+        {
+            for(int j=i;j<(n-i)/2;j++)
+            {
+                int temp;
+                temp=arr[j+i];
+                arr[j+i]=arr[n-1-j+i];
+                arr[n-1-j+i]=temp;
+            }
+        }
+    }
+    for(int i=0;i<n;i++)
+    printf("%d",arr[i]);
+    return 0;
+}
