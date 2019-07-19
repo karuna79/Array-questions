@@ -1,0 +1,48 @@
+//find max(i-j) where a[j]>=a[i] for an n-sized array in c
+
+#include <stdio.h>
+#include <stdlib.h>
+struct element
+{
+    int value;
+    int index;
+    
+};
+ int comp( void *a,  void *b)  
+{ 
+    int l = ((struct element *)a)->value; 
+    int r = ((struct element *)b)->value;  
+    return l - r; 
+} 
+int main()
+{
+   
+   int n;
+   scanf("%d",&n);
+   struct element arr[n];
+   for(int i=0;i<n;i++)
+   {
+       scanf("%d",&arr[i].value);
+       arr[i].index=i;
+   }
+   qsort(arr,n,sizeof(arr[0]),comp);
+   
+   int max=0;
+   int min=arr[0].index;
+   for(int i=1;i<n;i++)
+   {
+       if((arr[i].index-min)>max)
+       {
+           max=arr[i].index-min;
+       }
+       if(arr[i].index<min)
+       {
+           min=arr[i].index;
+        }
+   }    
+   printf("%d",max);
+
+    return 0;
+}
+
+Complexity - O(n log n)
