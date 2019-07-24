@@ -7,19 +7,12 @@ int main() {
 	int arr[n];
 	for(int i=0;i<n;i++)
 	scanf("%d",&arr[i]);
-	int k=0;
-	for(int i=0;i<n-1;i++)
-	{
-	if(arr[i]==arr[i+1])
-	{
-	    continue;
-	}
-	else
-	{
-	    arr[k++]=arr[i];
-	}
-	}
-	arr[k++]=arr[n-1];
+        int k=1,i;
+    for(i=1;i<n1;i++)
+    {
+        if(A[i]!=A[k-1])
+        A[k++]=A[i];
+    }
 	for(int i=0;i<k;i++)
 	printf("%d",arr[i]);
 	return 0;
