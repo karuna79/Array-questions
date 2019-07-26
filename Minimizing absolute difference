@@ -1,0 +1,48 @@
+int comp(const void *a,const void* b)
+{
+return (*(const int *)a - *(const int *)b);
+}
+int max(int a,int b,int c)
+{
+if(a>=b && a>=c)
+return a;
+if(b>=a && b>=c)
+return b;
+return c;
+}
+int min(int a,int b,int c)
+{
+if(a<=b && a<=c)
+return a;
+if(b<=a && b<=c)
+return b;
+return c;
+}
+int solve(int* A, int n1, int* B, int n2, int* C, int n3) {
+    qsort(A,n1,sizeof(A[0]),comp);    // sorting arrays
+qsort(B,n2,sizeof(B[0]),comp);
+qsort(C,n3,sizeof(C[0]),comp);
+
+    int i=0,j=0,k=0;
+int minimum=99999;
+int a=0,b=0,c=0;
+while(i<n1 && j<n2 && k<n3)
+{
+int m = max(A[i],B[j],C[k]);    // Finding tha max value
+int n = min(A[i],B[j],C[k]);    // Finding tha min value
+if(abs(m - n) < minimum)
+{
+minimum = abs(m-n);
+a = i;
+b = j;
+c = k;
+}
+if(n == A[i])
+i++;
+else if(n == B[j])
+j++;
+else
+k++;
+}
+return minimum;
+}
